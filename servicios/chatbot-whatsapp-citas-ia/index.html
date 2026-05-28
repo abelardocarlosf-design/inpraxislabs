@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chatbot de WhatsApp con IA para Agendar Citas | In Praxis Labs Toluca</title>
+<meta name="description" content="Agendamiento de citas, recordatorios y respuestas 24/7 por WhatsApp con inteligencia artificial. Reduce no-shows hasta 60% en clínicas y consultorios.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://inpraxislabs.com.mx/servicios/chatbot-whatsapp-citas-ia/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="In Praxis Labs">
+<meta property="og:title" content="Chatbot de WhatsApp con IA para Agendar Citas | In Praxis Labs Toluca">
+<meta property="og:description" content="Agendamiento de citas, recordatorios y respuestas 24/7 por WhatsApp con inteligencia artificial. Reduce no-shows hasta 60% en clínicas y consultorios.">
+<meta property="og:image" content="https://inpraxislabs.com.mx/og-image.jpg">
+<meta property="og:url" content="https://inpraxislabs.com.mx/servicios/chatbot-whatsapp-citas-ia/">
+
+<!-- Favicons -->
+<link rel="icon" href="/Logo/IPL_Favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Manrope:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+<!-- Shared Stylesheet -->
+<link rel="stylesheet" href="/style.css">
+
+<!-- JSON-LD Schema: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "In Praxis Labs",
+  "url": "https://inpraxislabs.com.mx",
+  "logo": "https://inpraxislabs.com.mx/Logo/IPL_Logo_Horizontal_Oscuro.svg",
+  "founder": {
+    "@type": "Person",
+    "name": "Abelardo Carlos Flores"
+  }
+}
+</script>
+
+<!-- JSON-LD Schema: Service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Chatbot de WhatsApp con IA para Citas",
+  "provider": {
+    "@type": "Organization",
+    "name": "In Praxis Labs",
+    "url": "https://inpraxislabs.com.mx"
+  },
+  "areaServed": ["Toluca","Metepec","Lerma","CDMX"],
+  "description": "Implementación de chatbots inteligentes con inteligencia artificial por WhatsApp. Automatiza reservas, reprogramaciones y cancelaciones 24/7.",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://inpraxislabs.com.mx/servicios/chatbot-whatsapp-citas-ia/",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+
+<!-- JSON-LD Schema: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo agenda el chatbot una cita sin que se empalmen los horarios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El asistente inteligente se conecta mediante APIs seguras a tu Google Calendar o sistema de gestión de citas en tiempo real. Solo muestra y ofrece los horarios que realmente tienes libres."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los pacientes saben que están hablando con una IA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, siempre recomendamos actuar con total transparencia identificando al asistente como un agente digital de tu clínica. No obstante, el lenguaje y trato es sumamente cálido, fluido y profesional, humanizando la interacción."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si un paciente hace una pregunta muy compleja?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El chatbot está programado para resolver hasta el 80% de las dudas recurrentes sobre tu consultorio (ubicación, precios de consulta base, requisitos de preparación). Si detecta un caso complejo o una urgencia, transfiere inmediatamente la conversación a tu recepcionista o a ti para atención manual."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se requiere comprar licencias adicionales?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Te ayudamos a elegir el proveedor de la API de WhatsApp oficial que mejor se adapte a tu volumen de mensajes. Dichas licencias son contratadas de forma transparente a tu nombre, garantizándote total independencia."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- JSON-LD Schema: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://inpraxislabs.com.mx/"},
+    {"@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://inpraxislabs.com.mx/servicios/"},
+    {"@type": "ListItem", "position": 3, "name": "Chatbot de WhatsApp con IA", "item": "https://inpraxislabs.com.mx/servicios/chatbot-whatsapp-citas-ia/"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ===== CANVAS DE RED NEURONAL ===== -->
+<canvas id="neural-canvas" aria-hidden="true"></canvas>
+
+<!-- ===== NAVEGACIÓN ===== -->
+<nav class="nav scrolled" id="nav" role="navigation" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="In Praxis Labs — Inicio">
+      <img src="/Logo/IPL_Logo_Horizontal_Oscuro.svg" alt="In Praxis Labs" style="height: 38px; width: auto; display: block;">
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="/servicios/">Servicios</a>
+      <a href="/industrias/">Industrias</a>
+      <a href="/zonas/">Zonas</a>
+      <a href="/sobre-nosotros/">Fundador</a>
+      <a href="/contacto/" class="btn btn-primary btn-sm">Auditoría gratis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== CONTENIDO PRINCIPAL ===== -->
+<main class="subpage-hero">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación">
+      <a href="/">Inicio</a>
+      <span class="sep">/</span>
+      <a href="/servicios/">Servicios</a>
+      <span class="sep">/</span>
+      <span class="active">Chatbot de WhatsApp con IA</span>
+    </nav>
+    
+    <h1 class="section-title">Chatbot de WhatsApp con IA: agenda citas y reduce no‑shows</h1>
+    <p class="section-subtitle">Un asistente inteligente que trabaja 24/7 por WhatsApp. Responde al instante, agenda citas de forma autónoma y reduce el ausentismo hasta un 60%.</p>
+    
+    <div class="founder-grid" style="margin-top: 4rem; grid-template-columns: 1fr;">
+      <div class="founder-info">
+        <h2>El dolor de atender WhatsApp manualmente</h2>
+        <p>Tu recepcionista no puede responder a tres personas al mismo tiempo. Cuando un paciente escribe por la noche o durante el fin de semana para agendar una cita y nadie le contesta, busca a otro especialista en Google y lo agendas con él. Además, el ausentismo (no-show) de pacientes que simplemente olvidan su consulta cuesta miles de pesos a tu clínica mensualmente. Gestionar esto manualmente consume tiempo valioso que deberías dedicar a la atención médica.</p>
+      </div>
+    </div>
+
+    <!-- Seccion Cómo Funciona -->
+    <div style="margin-top: 5rem;">
+      <div class="kicker">FUNCIONAMIENTO AUTÓNOMO</div>
+      <h2 class="section-title">Cómo funciona el asistente inteligente</h2>
+      <div class="subpage-grid">
+        <div class="subpage-card">
+          <h3>1. Recepción y Saludo Cálido</h3>
+          <p>El chatbot responde en menos de 2 segundos. Saluda amablemente, identifica sus necesidades y conversa en lenguaje natural y fluido (tuteo mexicano profesional).</p>
+        </div>
+        <div class="subpage-card">
+          <h3>2. Consulta de Disponibilidad</h3>
+          <p>El asistente consulta tu calendario (Google Calendar o Doctoralia) en tiempo real para mostrar únicamente los horarios libres que tienes disponibles para consulta.</p>
+        </div>
+        <div class="subpage-card">
+          <h3>3. Confirmación y Registro</h3>
+          <p>Solicita los datos del paciente (nombre, motivo de consulta, teléfono) e inscribe la cita automáticamente en tu agenda, enviando una confirmación inmediata por WhatsApp.</p>
+        </div>
+        <div class="subpage-card">
+          <h3>4. Recordatorios Preventivos</h3>
+          <p>Envía mensajes automáticos 24 horas antes solicitando confirmación activa ("Sí" o "No"). Si cancelan, el bot ofrece reprogramar y libera el espacio para otro paciente.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resultados Típicos -->
+    <div style="margin-top: 5rem; padding: 3rem 2rem; background: rgba(14,20,32,0.4); border: 1px solid var(--line); border-radius: var(--radius);">
+      <div class="kicker">MÉTRICAS REALES</div>
+      <h2 class="section-title" style="font-size: 1.8rem; max-width: none;">Resultados medibles y garantizados</h2>
+      <p style="color: var(--text-muted); max-width: 800px; margin-bottom: 2rem;">La automatización con Inteligencia Artificial no es una tendencia: es una inversión que se paga sola desde el primer mes.</p>
+      <div class="tech-grid">
+        <div class="tech-icon">📈 Hasta 60% menos inasistencias</div>
+        <div class="tech-icon">⏱️ 85% de ahorro en tiempo de recepción</div>
+        <div class="tech-icon">💬 0 mensajes sin responder (24/7)</div>
+      </div>
+    </div>
+
+    <!-- Seccion Cumplimiento y Seguridad -->
+    <div style="margin-top: 5rem;">
+      <div class="kicker">SEGURIDAD Y PRIVACIDAD</div>
+      <h2 class="section-title">Absoluto cumplimiento de privacidad (LFPDPPP)</h2>
+      <p style="color: var(--text-muted); max-width: 700px; margin-bottom: 2rem;">Los datos de salud son sumamente sensibles. Configuramos los flujos de información garantizando que cada dato recabado cuente con la aceptación tácita de tu aviso de privacidad, almacenando la información en bases de datos cifradas y seguras.</p>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div style="margin-top: 5rem;">
+      <div class="kicker">PREGUNTAS FRECUENTES</div>
+      <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; margin-left: auto; margin-right: auto;">Resolvemos tus dudas</h2>
+      
+      <div class="faq-accordion">
+        <div class="faq-item">
+          <button class="faq-trigger">¿Cómo agenda el chatbot una cita sin que se empalmen los horarios?</button>
+          <div class="faq-content">
+            <p>El asistente inteligente se conecta mediante APIs seguras a tu Google Calendar o sistema de gestión de citas en tiempo real. Solo muestra y ofrece los horarios que realmente tienes libres.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">¿Los pacientes saben que están hablando con una IA?</button>
+          <div class="faq-content">
+            <p>Sí, siempre recomendamos actuar con total transparencia identificando al asistente como un agente digital de tu clínica. No obstante, el lenguaje y trato es sumamente cálido, fluido y profesional, humanizando la interacción.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">¿Qué pasa si un paciente hace una pregunta muy compleja?</button>
+          <div class="faq-content">
+            <p>El chatbot está programado para resolver hasta el 80% de las dudas recurrentes sobre tu consultorio (ubicación, precios de consulta base, requisitos de preparación). Si detecta un caso complejo o una urgencia, transfiere inmediatamente la conversación a tu recepcionista o a ti para atención manual.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">¿Se requiere comprar licencias adicionales?</button>
+          <div class="faq-content">
+            <p>Te ayudamos a elegir el proveedor de la API de WhatsApp oficial que mejor se adapte a tu volumen de mensajes. Dichas licencias son contratadas de forma transparente a tu nombre, garantizándote total independencia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA de Acción -->
+    <div style="margin-top: 6rem; text-align: center;" class="reveal">
+      <h2 class="section-title" style="margin: 0 auto 1.5rem;">¿Listo para liberar tu recepción?</h2>
+      <a href="/servicios/auditoria-digital-gratuita/" class="btn btn-primary">Agenda tu auditoría gratuita hoy</a>
+      <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">Sin costo ni compromisos comerciales.</p>
+    </div>
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="/Logo/IPL_Logo_Horizontal_Oscuro.svg" alt="In Praxis Labs" style="height: 32px; width: auto; display: block;">
+      </div>
+      <nav class="footer-nav" aria-label="Navegación de pie de página">
+        <a href="/servicios/">Servicios</a>
+        <a href="/industrias/">Industrias</a>
+        <a href="/zonas/">Zonas</a>
+        <a href="/sobre-nosotros/">Fundador</a>
+        <a href="/contacto/">Contacto</a>
+        <a href="/aviso-de-privacidad/">Aviso de Privacidad</a>
+        <a href="/terminos-y-condiciones/">Términos y Condiciones</a>
+      </nav>
+      <div class="footer-right">
+        &copy; <span id="footer-year">2026</span> In Praxis Labs
+      </div>
+    </div>
+    <div class="footer-zone">
+      Automatización con IA y webs de última generación para clínicas y negocios de servicios en <strong>Toluca</strong>, <strong>Metepec</strong>, <strong>Lerma</strong> y <strong>CDMX</strong>.
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/527224282246?text=Hola%20Abelardo%2C%20vi%20el%20sitio%20de%20In%20Praxis%20Labs%20y%20me%20interesa%20una%20auditor%C3%ADa" target="_blank" rel="noopener" class="wa-float" aria-label="Escribir por WhatsApp" id="wa-float">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<!-- Shared Script -->
+<script src="/main.js" defer></script>
+</body>
+</html>

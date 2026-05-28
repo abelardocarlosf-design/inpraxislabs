@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /gracias/
+Disallow: /admin/
+Disallow: /api/
+Sitemap: https://inpraxislabs.com.mx/sitemap.xml
