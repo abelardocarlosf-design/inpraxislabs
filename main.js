@@ -1,6 +1,9 @@
 (function() {
   'use strict';
 
+  // Add js-active class to document root to enable progressive enhancement animations
+  document.documentElement.classList.add('js-active');
+
   // ============================================================
   // NEURAL NETWORK CANVAS
   // ============================================================
@@ -264,7 +267,7 @@
             revealObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      }, { threshold: 0.01, rootMargin: '0px 0px 100px 0px' });
 
       revealElements.forEach(el => revealObserver.observe(el));
     } else {

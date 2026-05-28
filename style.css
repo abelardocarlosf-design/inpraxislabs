@@ -153,13 +153,17 @@ html { scrollbar-color: var(--accent) var(--ink); scrollbar-width: thin; }
   font-size: 0.85rem;
 }
 
-/* ---- REVEAL ANIMATIONS ---- */
+/* ---- REVEAL ANIMATIONS (Progressive Enhancement) ---- */
 .reveal {
-  opacity: 0;
-  transform: translateY(40px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
-.reveal.visible {
+html.js-active .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+html.js-active .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -170,6 +174,7 @@ html { scrollbar-color: var(--accent) var(--ink); scrollbar-width: thin; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  html.js-active .reveal { opacity: 1; transform: none; }
   .reveal.visible { transform: none; }
 }
 
