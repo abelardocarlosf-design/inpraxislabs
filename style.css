@@ -1516,108 +1516,214 @@ html.js-active .reveal.visible {
   background: var(--bg-panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 3.5rem 2rem;
   margin-bottom: 2.5rem;
   position: relative;
   overflow: hidden;
-}
-.demo-flow-container::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(28, 34, 48, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 34, 48, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
-  opacity: 0.5;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
 }
 
-.demo-flow-diagram {
+/* --- Barra de editor estilo n8n --- */
+.demo-editor-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.9rem;
+  padding: 0.7rem 1.1rem;
+  background: linear-gradient(180deg, rgba(17, 22, 31, 0.95), rgba(12, 16, 24, 0.95));
+  border-bottom: 1px solid var(--line);
   position: relative;
-  z-index: 2;
-  gap: 0.5rem;
+  z-index: 3;
 }
-
-.demo-node {
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 1.25rem 1rem;
-  text-align: center;
-  flex: 1;
-  max-width: 180px;
-  min-width: 130px;
-  position: relative;
-  transition: all 0.4s var(--ease-out);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+.demo-win-dots { display: inline-flex; gap: 6px; }
+.demo-win-dots i {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--line); display: block;
 }
-.demo-node-step {
+.demo-win-dots i:nth-child(1) { background: rgba(224, 122, 107, 0.65); }
+.demo-win-dots i:nth-child(2) { background: rgba(201, 162, 75, 0.65); }
+.demo-win-dots i:nth-child(3) { background: rgba(70, 211, 154, 0.65); }
+.demo-filename {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--text-low);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  letter-spacing: 0.02em;
 }
-.demo-node-icon {
-  font-size: 1.5rem;
-  margin: 0.2rem 0;
-  color: var(--accent);
-  transition: transform 0.3s;
-}
-.demo-node h4 {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-hi);
-  line-height: 1.3;
-}
-
-.demo-node.active {
-  transform: scale(1.04);
-  border-color: var(--accent);
-  box-shadow: 0 0 25px var(--glow), inset 0 0 10px rgba(201, 162, 75, 0.08);
-}
-.demo-node.active .demo-node-icon {
-  transform: scale(1.15);
-  color: var(--accent-soft);
-}
-
-.demo-connector {
-  flex: 1;
-  height: 40px;
-  display: flex;
+.demo-status {
+  margin-left: auto;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--live);
+}
+.demo-status-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--live);
+  animation: demo-live 1.8s ease-in-out infinite;
+}
+@keyframes demo-live {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(70, 211, 154, 0.5); opacity: 1; }
+  50%      { box-shadow: 0 0 0 6px rgba(70, 211, 154, 0); opacity: 0.65; }
+}
+
+/* --- Canvas blueprint donde corre el flujo --- */
+.demo-canvas {
   position: relative;
-  min-width: 30px;
+  padding: 3rem 2rem;
+  min-height: 240px;
+  background-image:
+    linear-gradient(rgba(28, 34, 48, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 34, 48, 0.4) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
-.demo-connector svg {
-  width: 100%;
-  height: 100%;
+.demo-canvas::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(55% 75% at 50% 45%, var(--glow), transparent 70%);
+  pointer-events: none;
+}
+
+/* --- Capa SVG de conexiones (curvas bezier) --- */
+.demo-links {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   overflow: visible;
+  z-index: 1;
+  pointer-events: none;
 }
-.demo-connection-line {
+.demo-link-track {
+  fill: none;
   stroke: var(--line);
   stroke-width: 2;
-  stroke-linecap: round;
 }
-.demo-connection-line-active {
+.demo-link-flow {
+  fill: none;
   stroke: var(--accent);
   stroke-width: 2;
   stroke-linecap: round;
+  stroke-dasharray: 6 8;
   opacity: 0;
   transition: opacity 0.3s;
 }
-.demo-pulse-circle {
+.demo-link-flow.on {
+  opacity: 0.95;
+  animation: demo-dash 0.6s linear infinite;
+}
+@keyframes demo-dash { to { stroke-dashoffset: -14; } }
+.demo-packet {
   fill: var(--live);
-  filter: drop-shadow(0 0 5px var(--live));
+  filter: drop-shadow(0 0 7px var(--live));
+}
+
+/* --- Nodos del flujo (zig-zag = mapa) --- */
+.demo-nodes {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(0.6rem, 2vw, 1.6rem);
+}
+.demo-node {
+  flex: 1 1 0;
+  max-width: 210px;
+  min-width: 0;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.85rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  position: relative;
+  transition: transform 0.4s var(--ease-out), border-color 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+.demo-nodes .demo-node:nth-child(odd)  { margin-top: 46px; }
+.demo-nodes .demo-node:nth-child(even) { margin-top: 0; }
+
+.demo-node-tile {
+  flex-shrink: 0;
+  width: 42px; height: 42px;
+  border-radius: 11px;
+  display: grid; place-items: center;
+  background: rgba(201, 162, 75, 0.08);
+  border: 1px solid rgba(201, 162, 75, 0.22);
+  color: var(--accent);
+  transition: all 0.35s var(--ease-out);
+}
+.demo-node-tile svg { width: 21px; height: 21px; }
+.demo-node.is-ai .demo-node-tile {
+  background: rgba(70, 211, 154, 0.08);
+  border-color: rgba(70, 211, 154, 0.25);
+  color: var(--live);
+}
+.demo-node-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  text-align: left;
+}
+.demo-node-step {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-low);
+}
+.demo-node.is-ai .demo-node-step { color: var(--live); }
+.demo-node h4 {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-hi);
+  line-height: 1.25;
+}
+
+/* Puertos de conexión (estética n8n) */
+.demo-port {
+  position: absolute;
+  top: 50%;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--bg-deep);
+  border: 1.5px solid var(--line);
+  transform: translateY(-50%);
+  transition: all 0.35s var(--ease-out);
+}
+.demo-port-in  { left: -5px; }
+.demo-port-out { right: -5px; }
+.demo-node:first-child .demo-port-in { opacity: 0; }
+.demo-node:last-child  .demo-port-out { opacity: 0; }
+
+/* Estado activo: el nodo se enciende cuando llega el paquete */
+.demo-node.active {
+  transform: scale(1.06);
+  border-color: var(--accent);
+  box-shadow: 0 0 28px var(--glow), 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 4;
+}
+.demo-node.active .demo-node-tile {
+  background: rgba(201, 162, 75, 0.16);
+  border-color: var(--accent);
+  box-shadow: 0 0 18px var(--glow);
+}
+.demo-node.active .demo-port {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
+}
+.demo-node.is-ai.active {
+  border-color: var(--live);
+  box-shadow: 0 0 28px rgba(70, 211, 154, 0.28), 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.demo-node.is-ai.active .demo-node-tile {
+  background: rgba(70, 211, 154, 0.16);
+  border-color: var(--live);
+  box-shadow: 0 0 18px rgba(70, 211, 154, 0.3);
 }
 
 .demo-calc-container {
@@ -1670,33 +1776,31 @@ html.js-active .reveal.visible {
   font-weight: 700;
 }
 
-@media (max-width: 992px) {
-  .demo-flow-diagram {
+@media (max-width: 760px) {
+  .demo-canvas { padding: 2rem 1.25rem; }
+  .demo-nodes {
     flex-direction: column;
-    gap: 1.5rem;
     align-items: stretch;
+    gap: 2.6rem;
   }
+  .demo-nodes .demo-node:nth-child(odd),
+  .demo-nodes .demo-node:nth-child(even) { margin-top: 0; }
   .demo-node {
     max-width: none;
-    min-width: 0;
-    flex-direction: row;
-    text-align: left;
-    padding: 1rem 1.5rem;
-    justify-content: flex-start;
-    gap: 1.5rem;
+    width: 100%;
+    padding: 0.9rem 1.1rem;
   }
-  .demo-node-info {
-    display: flex;
-    flex-direction: column;
+  .demo-port-in {
+    left: 50%; top: -5px;
+    transform: translateX(-50%);
   }
-  .demo-connector {
-    height: 30px;
-    width: 40px;
-    margin: 0 auto;
+  .demo-port-out {
+    right: auto; left: 50%; top: auto; bottom: -5px;
+    transform: translateX(-50%);
   }
-  .demo-connector svg {
-    transform: rotate(90deg);
-  }
+}
+
+@media (max-width: 992px) {
   .demo-calc-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;

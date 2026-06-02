@@ -426,41 +426,64 @@
   // ============================================================
   // BLOQUE 3: DEMO INTERACTIVO — SIMULADOR DE FLUJOS n8n (MD MAESTRO v2)
   // ============================================================
+  // Iconos monoline SVG propios (sin emojis) — feather/lucide style, stroke dorado
+  const demoIcons = {
+    message: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+    cpu: '<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M20 9h2M20 14h2M2 9h2M2 14h2"/>',
+    calendarSearch: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="11" cy="15.5" r="2.4"/><path d="m14.5 19-1.6-1.6"/>',
+    calendarCheck: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18m-9 5 2 2 4-4"/>',
+    bell: '<path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>',
+    inbox: '<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
+    fileInvoice: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/>',
+    send: '<path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/>',
+    database: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>',
+    fileText: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>',
+    phone: '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>'
+  };
+
   const demoData = {
     leads: {
+      file: "respuesta-de-leads.flow",
       nodes: [
-        { step: "Paso 1", icon: "💬", title: "Paciente escribe" },
-        { step: "Paso 2", icon: "🧠", title: "IA interpreta" },
-        { step: "Paso 3", icon: "📅", title: "Consulta agenda" },
-        { step: "Paso 4", icon: "📝", title: "Agenda la cita" },
-        { step: "Paso 5", icon: "🔔", title: "Confirma + recordatorio" }
+        { step: "Trigger", icon: "message", title: "Paciente escribe" },
+        { step: "IA", icon: "cpu", title: "Interpreta intención", kind: "ai" },
+        { step: "Acción", icon: "calendarSearch", title: "Consulta tu agenda" },
+        { step: "Acción", icon: "calendarCheck", title: "Agenda la cita" },
+        { step: "Output", icon: "bell", title: "Confirma + recordatorio" }
       ],
       before: "4 horas al día contestando. Mensajes perdidos. Pacientes que se van desesperados con la competencia.",
       after: "Respuesta en <2 min, 24/7. <strong>~20 horas tuyas, de vuelta cada mes.</strong>",
       whatsapp: "Hola Abelardo, me interesó el flujo de Respuesta de Leads y quiero recuperar mi tiempo."
     },
     cotizacion: {
+      file: "cotizacion-cfdi.flow",
       nodes: [
-        { step: "Paso 1", icon: "📩", title: "Cliente pide" },
-        { step: "Paso 2", icon: "⚙️", title: "IA arma propuesta" },
-        { step: "Paso 3", icon: "🧾", title: "Genera CFDI 4.0" },
-        { step: "Paso 4", icon: "✉️", title: "Envía por correo" }
+        { step: "Trigger", icon: "inbox", title: "Cliente solicita" },
+        { step: "IA", icon: "cpu", title: "Arma la propuesta", kind: "ai" },
+        { step: "Acción", icon: "fileInvoice", title: "Genera CFDI 4.0" },
+        { step: "Output", icon: "send", title: "Envía por correo" }
       ],
       before: "Horas cotizando a mano en Word. Propuestas tardías. Facturas que se retrasan y cobranza lenta.",
       after: "Cotizaciones listas en 3 minutos. Facturación al instante. <strong>Ahorro de ~15 horas al mes.</strong>",
       whatsapp: "Hola Abelardo, me interesó el flujo de Cotización y Facturación Automática y quiero recuperar mi tiempo."
     },
     reporte: {
+      file: "reporte-semanal.flow",
       nodes: [
-        { step: "Paso 1", icon: "📊", title: "Se juntan datos" },
-        { step: "Paso 2", icon: "🧠", title: "IA redacta resumen" },
-        { step: "Paso 3", icon: "📱", title: "WhatsApp cada lunes" }
+        { step: "Trigger", icon: "database", title: "Recolecta datos" },
+        { step: "IA", icon: "cpu", title: "Redacta el resumen", kind: "ai" },
+        { step: "Output", icon: "phone", title: "Llega a tu WhatsApp" }
       ],
       before: "Abrir 5 Excel distintos el domingo en la noche. Errores de captura y sin dirección de KPIs.",
       after: "Diagnóstico operativo cada lunes a las 8:00 AM. Control absoluto. <strong>Toma decisiones en 5 minutos.</strong>",
       whatsapp: "Hola Abelardo, me interesó el flujo de Reporte Semanal del Negocio y quiero recuperar mi tiempo."
     }
   };
+
+  let currentDemoTab = 'leads';
+  let demoLinks = [];
+  let demoInView = false;
+  let demoResizeRaf = null;
 
   let demoTimeout = null;
   let activeAnimationFrames = [];
@@ -474,104 +497,163 @@
     activeAnimationFrames = [];
   }
 
-  function runDemoSimulation(tabKey) {
-    clearAllSimulations();
+  const SVGNS = 'http://www.w3.org/2000/svg';
 
+  // 1) Renderiza el canvas: capa SVG de conexiones + nodos del flujo
+  function renderFlow(tabKey) {
     const data = demoData[tabKey];
     const diagramEl = document.getElementById('demo-diagram');
     if (!diagramEl) return;
 
-    // Render nodes and connectors
-    let html = '';
-    data.nodes.forEach((node, idx) => {
-      html += `
-        <div class="demo-node" id="node-${idx}">
-          <span class="demo-node-step">${node.step}</span>
-          <div class="demo-node-icon">${node.icon}</div>
-          <div class="demo-node-info">
-            <h4>${node.title}</h4>
-          </div>
+    const nodesHtml = data.nodes.map((node, idx) => `
+      <div class="demo-node${node.kind === 'ai' ? ' is-ai' : ''}" id="node-${idx}" style="--i:${idx}">
+        <span class="demo-port demo-port-in" aria-hidden="true"></span>
+        <div class="demo-node-tile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${demoIcons[node.icon] || ''}</svg>
         </div>
-      `;
-      if (idx < data.nodes.length - 1) {
-        html += `
-          <div class="demo-connector" id="connector-${idx}">
-            <svg viewBox="0 0 100 20" preserveAspectRatio="none">
-              <line x1="0" y1="10" x2="100" y2="10" class="demo-connection-line"></line>
-              <line x1="0" y1="10" x2="100" y2="10" class="demo-connection-line-active" id="line-active-${idx}"></line>
-              <circle cx="0" cy="10" r="5" class="demo-pulse-circle" id="pulse-${idx}" style="display: none;"></circle>
-            </svg>
-          </div>
-        `;
+        <div class="demo-node-info">
+          <span class="demo-node-step">${node.step}</span>
+          <h4>${node.title}</h4>
+        </div>
+        <span class="demo-port demo-port-out" aria-hidden="true"></span>
+      </div>`).join('');
+
+    diagramEl.innerHTML =
+      `<svg class="demo-links" id="demo-links" aria-hidden="true"></svg>` +
+      `<div class="demo-nodes" id="demo-nodes">${nodesHtml}</div>`;
+  }
+
+  // 2) Dibuja las curvas bezier entre los puertos reales de cada nodo
+  function buildLinks(tabKey) {
+    const data = demoData[tabKey];
+    const canvas = document.getElementById('demo-diagram');
+    const svg = document.getElementById('demo-links');
+    if (!canvas || !svg) return;
+
+    const crect = canvas.getBoundingClientRect();
+    const W = crect.width, H = canvas.scrollHeight || crect.height;
+    svg.setAttribute('width', W);
+    svg.setAttribute('height', H);
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.innerHTML = '';
+    demoLinks = [];
+
+    for (let i = 0; i < data.nodes.length - 1; i++) {
+      const aEl = document.getElementById('node-' + i);
+      const bEl = document.getElementById('node-' + (i + 1));
+      if (!aEl || !bEl) continue;
+      const a = aEl.getBoundingClientRect();
+      const b = bEl.getBoundingClientRect();
+
+      // Orientación derivada de la geometría real (coincide con el CSS)
+      const horizontal = b.left > a.right - 1;
+
+      let sx, sy, ex, ey, c1x, c1y, c2x, c2y;
+      if (horizontal) {
+        sx = a.right - crect.left;  sy = a.top - crect.top + a.height / 2;
+        ex = b.left - crect.left;   ey = b.top - crect.top + b.height / 2;
+        const mx = (sx + ex) / 2;
+        c1x = mx; c1y = sy; c2x = mx; c2y = ey;
+      } else {
+        sx = a.left - crect.left + a.width / 2;  sy = a.bottom - crect.top;
+        ex = b.left - crect.left + b.width / 2;   ey = b.top - crect.top;
+        const my = (sy + ey) / 2;
+        c1x = sx; c1y = my; c2x = ex; c2y = my;
       }
-    });
+      const d = `M ${sx} ${sy} C ${c1x} ${c1y} ${c2x} ${c2y} ${ex} ${ey}`;
 
-    diagramEl.innerHTML = html;
+      const track = document.createElementNS(SVGNS, 'path');
+      track.setAttribute('d', d);
+      track.setAttribute('class', 'demo-link-track');
+      const flow = document.createElementNS(SVGNS, 'path');
+      flow.setAttribute('d', d);
+      flow.setAttribute('class', 'demo-link-flow');
+      const packet = document.createElementNS(SVGNS, 'circle');
+      packet.setAttribute('r', '5');
+      packet.setAttribute('class', 'demo-packet');
+      packet.style.opacity = '0';
 
-    // Simulation Loop States
-    let state = 0; // 2 * idx = Node active, 2 * idx + 1 = pulse travelling
+      svg.appendChild(track);
+      svg.appendChild(flow);
+      svg.appendChild(packet);
+
+      demoLinks.push({ flow, packet, length: flow.getTotalLength() });
+    }
+  }
+
+  // 3) Corre la simulación: enciende nodos y manda paquetes por las curvas
+  function startSimulation(tabKey) {
+    const data = demoData[tabKey];
+    let state = 0; // par = nodo encendido · impar = paquete viajando
     const maxStates = 2 * data.nodes.length - 1;
 
-    function stepSimulation() {
-      // Clear previous active elements
-      for (let i = 0; i < data.nodes.length; i++) {
-        const node = document.getElementById(`node-${i}`);
-        if (node) node.classList.remove('active');
-      }
-      for (let i = 0; i < data.nodes.length - 1; i++) {
-        const line = document.getElementById(`line-active-${i}`);
-        const pulse = document.getElementById(`pulse-${i}`);
-        if (line) line.style.opacity = '0';
-        if (pulse) {
-          pulse.style.display = 'none';
-          pulse.setAttribute('cx', '0');
-        }
-      }
+    function clearActive() {
+      data.nodes.forEach((_, i) => {
+        const n = document.getElementById('node-' + i);
+        if (n) n.classList.remove('active');
+      });
+      demoLinks.forEach(l => {
+        l.flow.classList.remove('on');
+        l.packet.style.opacity = '0';
+      });
+    }
+
+    function step() {
+      clearActive();
 
       if (state % 2 === 0) {
-        // Active Node state
         const nodeIdx = state / 2;
-        const node = document.getElementById(`node-${nodeIdx}`);
+        const node = document.getElementById('node-' + nodeIdx);
         if (node) node.classList.add('active');
         state = (state + 1) % maxStates;
-        demoTimeout = setTimeout(stepSimulation, 1200); // 1.2s pause on node
+        demoTimeout = setTimeout(step, 1050);
       } else {
-        // Pulse Travel state
         const connIdx = Math.floor(state / 2);
-        const pulse = document.getElementById(`pulse-${connIdx}`);
-        const line = document.getElementById(`line-active-${connIdx}`);
-        if (pulse && line) {
-          pulse.style.display = 'block';
-          line.style.opacity = '1';
-
-          let progress = 0;
-          const duration = 650; // 650ms transit
-          const startTime = performance.now();
-
-          function animatePulse(timestamp) {
-            const elapsed = timestamp - startTime;
-            progress = Math.min(elapsed / duration, 1);
-            pulse.setAttribute('cx', (progress * 100).toString());
-
-            if (progress < 1) {
-              const frame = requestAnimationFrame(animatePulse);
-              activeAnimationFrames.push(frame);
-            } else {
-              pulse.style.display = 'none';
-              state = (state + 1) % maxStates;
-              stepSimulation();
-            }
-          }
-          const frame = requestAnimationFrame(animatePulse);
-          activeAnimationFrames.push(frame);
-        } else {
+        const link = demoLinks[connIdx];
+        if (!link) {
           state = (state + 1) % maxStates;
-          stepSimulation();
+          step();
+          return;
         }
+        link.flow.classList.add('on');
+        link.packet.style.opacity = '1';
+
+        const len = link.length;
+        const duration = 720;
+        const startTime = performance.now();
+
+        function travel(ts) {
+          const p = Math.min((ts - startTime) / duration, 1);
+          const eased = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+          const pt = link.flow.getPointAtLength(eased * len);
+          link.packet.setAttribute('cx', pt.x);
+          link.packet.setAttribute('cy', pt.y);
+          if (p < 1) {
+            activeAnimationFrames.push(requestAnimationFrame(travel));
+          } else {
+            link.packet.style.opacity = '0';
+            state = (state + 1) % maxStates;
+            step();
+          }
+        }
+        activeAnimationFrames.push(requestAnimationFrame(travel));
       }
     }
 
-    stepSimulation();
+    step();
+  }
+
+  // Orquestador: render -> (espera layout) -> links -> simulación
+  function runDemoSimulation(tabKey) {
+    clearAllSimulations();
+    currentDemoTab = tabKey;
+    renderFlow(tabKey);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        buildLinks(tabKey);
+        startSimulation(tabKey);
+      });
+    });
   }
 
   // Bind Tab Click Handlers
@@ -596,6 +678,8 @@
       if (ctaBtn) {
         ctaBtn.href = `https://wa.me/527224282246?text=${encodeURIComponent(data.whatsapp)}`;
       }
+      const fileEl = document.getElementById('demo-filename');
+      if (fileEl) fileEl.textContent = data.file;
 
       runDemoSimulation(tabKey);
     });
@@ -606,6 +690,7 @@
     const flowContainer = document.querySelector('.demo-flow-container');
     const demoObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        demoInView = entry.isIntersecting;
         if (entry.isIntersecting) {
           const activeTab = document.querySelector('.demo-tab.active');
           const tabKey = activeTab ? activeTab.getAttribute('data-tab') : 'leads';
@@ -623,6 +708,16 @@
     // Fallback if IntersectionObserver is not supported
     runDemoSimulation('leads');
   }
+
+  // Recalcular las curvas del mapa al redimensionar (debounce con rAF)
+  window.addEventListener('resize', () => {
+    if (demoResizeRaf) cancelAnimationFrame(demoResizeRaf);
+    demoResizeRaf = requestAnimationFrame(() => {
+      if (demoInView && document.getElementById('demo-nodes')) {
+        runDemoSimulation(currentDemoTab);
+      }
+    });
+  }, { passive: true });
 
   // ============================================================
   // CONTADORES ANIMADOS — "los números se animan" (MD-MAESTRO-VISUAL)
