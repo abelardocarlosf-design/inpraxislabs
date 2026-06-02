@@ -44,10 +44,10 @@
   - `[x]` Verificar validación de schemas JSON-LD
   - `[x]` Correr auditoría Lighthouse y pulir cualquier problema de LCP/CLS en móvil
 
-- `[/]` **Fase 6: Auditoría de Usuario, Refactorización de Animaciones (.reveal) y Despliegue Final**
+- `[x]` **Fase 6: Auditoría de Usuario, Refactorización de Animaciones (.reveal) y Despliegue Final**
   - `[x]` Refactorizar `.reveal` en `style.css` para usar mejora progresiva (`html.js-active .reveal`)
   - `[x]` Implementar activación de `js-active` en `main.js` y optimizar IntersectionObserver (`threshold: 0.01`, `rootMargin: '0px 0px 100px 0px'`)
   - `[x]` Rellenar span del año en el footer (`#footer-year`) en `index.html` con `2026` como fallback
   - `[x]` Ejecutar `npm run build` localmente y verificar compilación sin errores
-  - `[ ]` Realizar commit semántico y hacer push a GitHub para disparar deploy automático en Vercel
-  - `[ ]` Validar URLs de producción y certificar el funcionamiento premium del sitio
+  - `[x]` Realizar commit semántico y hacer push a GitHub para disparar deploy automático en Vercel
+  - `[x]` Validar URLs de producción y certificar el funcionamiento premium del sitio
