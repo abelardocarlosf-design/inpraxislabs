@@ -33,3 +33,5 @@ dist-ssr/
 # Project-specific ignored folders
 LearnHubV2.1/
 .claude/
+
+.vercel
