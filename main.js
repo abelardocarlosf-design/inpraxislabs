@@ -676,7 +676,7 @@
       if (beforeText) beforeText.innerHTML = data.before;
       if (afterText) afterText.innerHTML = data.after;
       if (ctaBtn) {
-        ctaBtn.href = `https://wa.me/527224282246?text=${encodeURIComponent(data.whatsapp)}`;
+        ctaBtn.href = `https://wa.me/525650405218?text=${encodeURIComponent(data.whatsapp)}`;
       }
       const fileEl = document.getElementById('demo-filename');
       if (fileEl) fileEl.textContent = data.file;

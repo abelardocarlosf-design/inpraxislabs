@@ -5,7 +5,11 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const BASE_URL = 'https://inpraxislabs.com.mx';
+const BASE_URL = 'https://www.inpraxislabs.com.mx';
+
+// Rutas extra que no son páginas construidas por Vite (se sirven vía rewrite).
+// LearnHub vive en el Proyecto B y se monta en /learnhub con un rewrite de Vercel.
+const EXTRA_ROUTES = ['/learnhub/'];
 
 // Directories to ignore completely
 const IGNORE_DIRS = new Set([
@@ -22,6 +26,9 @@ const IGNORE_DIRS = new Set([
 function getRouteMeta(route) {
   if (route === '/') {
     return { changefreq: 'weekly', priority: '1.0' };
+  }
+  if (route === '/learnhub/') {
+    return { changefreq: 'weekly', priority: '0.9' };
   }
   if (route.startsWith('/servicios/')) {
     return { changefreq: 'monthly', priority: '0.8' };
@@ -94,9 +101,16 @@ function generateSitemap() {
     return a.localeCompare(b);
   });
 
-  for (const relPage of relativePages) {
-    const cleanPath = relPage.replace(/\\/g, '/');
-    const route = cleanPath ? `/${cleanPath}/` : '/';
+  // Rutas construidas por Vite + rutas extra servidas por rewrite (LearnHub)
+  const routes = [
+    ...relativePages.map((relPage) => {
+      const cleanPath = relPage.replace(/\\/g, '/');
+      return cleanPath ? `/${cleanPath}/` : '/';
+    }),
+    ...EXTRA_ROUTES,
+  ];
+
+  for (const route of routes) {
     const { changefreq, priority } = getRouteMeta(route);
     const loc = `${BASE_URL}${route}`;
 

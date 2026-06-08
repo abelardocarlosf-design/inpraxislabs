@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/learnhub", "destination": "https://learnhub-v2-seven.vercel.app/learnhub" },
+    { "source": "/learnhub/:path*", "destination": "https://learnhub-v2-seven.vercel.app/learnhub/:path*" }
+  ]
+}
