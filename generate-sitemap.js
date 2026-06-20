@@ -20,6 +20,8 @@ const IGNORE_DIRS = new Set([
   '.gemini',
   'gracias', // Thank you page (disallowed in robots.txt)
   'Logo',
+  'LearnHubV2.1', // Repo anidado de Next.js: se sirve por rewrite, no por Vite.
+  'coverage', // Reportes de cobertura de tests (HTML), no son páginas públicas.
 ]);
 
 // Determine changefreq and priority based on route path
