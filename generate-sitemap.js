@@ -9,7 +9,7 @@ const BASE_URL = 'https://www.inpraxislabs.com.mx';
 
 // Rutas extra que no son páginas construidas por Vite (se sirven vía rewrite).
 // LearnHub vive en el Proyecto B y se monta en /learnhub con un rewrite de Vercel.
-const EXTRA_ROUTES = ['/learnhub/'];
+const EXTRA_ROUTES = ['/learnhub/', '/brujula/'];
 
 // Directories to ignore completely
 const IGNORE_DIRS = new Set([
@@ -21,6 +21,7 @@ const IGNORE_DIRS = new Set([
   'gracias', // Thank you page (disallowed in robots.txt)
   'Logo',
   'LearnHubV2.1', // Repo anidado de Next.js: se sirve por rewrite, no por Vite.
+  'BARBERSHOP CONTROL', // Brújula Estética (Next anidado): se sirve por rewrite, no por Vite.
   'coverage', // Reportes de cobertura de tests (HTML), no son páginas públicas.
 ]);
 
@@ -30,6 +31,9 @@ function getRouteMeta(route) {
     return { changefreq: 'weekly', priority: '1.0' };
   }
   if (route === '/learnhub/') {
+    return { changefreq: 'weekly', priority: '0.9' };
+  }
+  if (route === '/brujula/') {
     return { changefreq: 'weekly', priority: '0.9' };
   }
   if (route.startsWith('/servicios/')) {

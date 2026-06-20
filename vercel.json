@@ -2,6 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     { "source": "/learnhub", "destination": "https://learnhub-v2-seven.vercel.app/learnhub" },
-    { "source": "/learnhub/:path*", "destination": "https://learnhub-v2-seven.vercel.app/learnhub/:path*" }
+    { "source": "/learnhub/:path*", "destination": "https://learnhub-v2-seven.vercel.app/learnhub/:path*" },
+    { "source": "/brujula", "destination": "https://brujula-estetica.vercel.app/brujula" },
+    { "source": "/brujula/:path*", "destination": "https://brujula-estetica.vercel.app/brujula/:path*" }
   ]
 }
