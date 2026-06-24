@@ -1,0 +1,29 @@
+name: Brújula · recordatorio mismo-día (cron horario)
+
+# El plan Hobby de Vercel solo dispara sus crons 1×/día. Este workflow le pega
+# cada hora al endpoint ligero /api/cron/same-day para enviar el aviso "tu cita es
+# hoy" ~2-3h antes (ventana SAME_DAY_LEAD_HOURS). Es idempotente (no duplica) y
+# best-effort: GitHub puede retrasar el tick algunos minutos, lo cual no importa.
+#
+# Requisitos (una vez):
+#   1. Vercel (proyecto brujula-estetica) → env CRON_SECRET = <valor>
+#   2. GitHub repo → Settings → Secrets → Actions → BRUJULA_CRON_SECRET = <mismo valor>
+
+on:
+  schedule:
+    - cron: "0 * * * *" # cada hora en punto (UTC)
+  workflow_dispatch: {} # permite dispararlo a mano desde la pestaña Actions
+
+jobs:
+  same-day:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping endpoint same-day
+        run: |
+          code=$(curl -s -o /tmp/out.json -w "%{http_code}" \
+            -H "Authorization: Bearer ${{ secrets.BRUJULA_CRON_SECRET }}" \
+            https://www.inpraxislabs.com.mx/brujula/api/cron/same-day)
+          echo "HTTP $code"
+          cat /tmp/out.json || true
+          echo ""
+          test "$code" = "200"
